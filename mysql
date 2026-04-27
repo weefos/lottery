@@ -1,1 +1,171 @@
-s
+-- phpMyAdmin SQL Dump
+-- version 5.2.3
+-- https://www.phpmyadmin.net/
+--
+-- 主机： localhost
+-- 生成日期： 2026-04-27 21:17:01
+-- 服务器版本： 5.7.40-log
+-- PHP 版本： 8.2.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- 数据库： `lottery`
+--
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `inventory_records`
+--
+
+CREATE TABLE `inventory_records` (
+  `id` int(11) NOT NULL,
+  `shop_name` varchar(50) NOT NULL DEFAULT '玖誉府店',
+  `record_date` date NOT NULL COMMENT '盘点日期',
+  `zero_cash` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '零钱',
+  `zero_cash_expr` varchar(255) DEFAULT '',
+  `sports_scatter` json DEFAULT NULL COMMENT '体彩散票明细',
+  `s_scat_total` decimal(12,2) DEFAULT '0.00',
+  `welfare_scatter` json DEFAULT NULL COMMENT '福彩散票明细',
+  `w_scat_total` decimal(12,2) DEFAULT '0.00',
+  `sports_whole` json DEFAULT NULL COMMENT '体彩整票明细',
+  `s_whole_total` decimal(12,2) DEFAULT '0.00',
+  `welfare_whole` json DEFAULT NULL COMMENT '福彩整票明细',
+  `w_whole_total` decimal(12,2) DEFAULT '0.00',
+  `dianao` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '电脑',
+  `dianao_expr` varchar(255) DEFAULT '',
+  `diangua` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '电刮',
+  `diangua_expr` varchar(255) DEFAULT '',
+  `sports_lottery` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '体彩',
+  `sports_lottery_expr` varchar(255) DEFAULT '',
+  `wechat` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '微信',
+  `wechat_expr` varchar(255) DEFAULT '',
+  `alipay` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '支付宝',
+  `alipay_expr` varchar(255) DEFAULT '',
+  `bank_card` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '银行卡',
+  `bank_card_expr` varchar(255) DEFAULT '',
+  `debts` json DEFAULT NULL COMMENT '欠款明细',
+  `total_amount` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '总计',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `inventory_records`
+--
+
+INSERT INTO `inventory_records` (`id`, `shop_name`, `record_date`, `zero_cash`, `zero_cash_expr`, `sports_scatter`, `s_scat_total`, `welfare_scatter`, `w_scat_total`, `sports_whole`, `s_whole_total`, `welfare_whole`, `w_whole_total`, `dianao`, `dianao_expr`, `diangua`, `diangua_expr`, `sports_lottery`, `sports_lottery_expr`, `wechat`, `wechat_expr`, `alipay`, `alipay_expr`, `bank_card`, `bank_card_expr`, `debts`, `total_amount`, `remark`, `created_at`) VALUES
+(26, '黄金山店', '2026-04-17', 8403.00, '213+4690+3500', '{\"10\": \"\", \"20\": \"\", \"30\": \"\", \"50\": \"\"}', 0.00, '{\"10\": \"31+16+32+26+29+10+28+35+16+26+33+27+27\", \"20\": \"7+14+12+22+16+23+16\", \"30\": \"20+4+18+14\", \"50\": \"16+18+20\"}', 9940.00, '{\"500\": \"\", \"600\": \"\", \"1000\": \"\"}', 0.00, '{\"500\": \"11+17+9+1\", \"600\": \"19\", \"1000\": \"8\"}', 38400.00, 1696.00, '1696.00', 6060.00, '21060-15000', 0.00, '0.00', 6579.43, '8.83+6570.6', 2433.33, '2433.33', -7190.50, '22809.5-30000', '[]', 66321.26, '零钱4690+3500', '2026-04-23 16:39:31');
+
+--
+-- 转储表的索引
+--
+
+--
+-- 表的索引 `inventory_records`
+--
+ALTER TABLE `inventory_records`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uniq_shop_date` (`shop_name`,`record_date`);
+
+--
+-- 在导出的表使用AUTO_INCREMENT
+--
+
+--
+-- 使用表AUTO_INCREMENT `inventory_records`
+--
+ALTER TABLE `inventory_records`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=579;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+-- phpMyAdmin SQL Dump
+-- version 5.2.3
+-- https://www.phpmyadmin.net/
+--
+-- 主机： localhost
+-- 生成日期： 2026-04-27 12:45:10
+-- 服务器版本： 5.7.40-log
+-- PHP 版本： 8.2.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- 数据库： `lottery`
+--
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `transaction_records`
+--
+
+CREATE TABLE `transaction_records` (
+  `id` int(11) NOT NULL,
+  `shop_name` varchar(50) NOT NULL DEFAULT '玖誉府店',
+  `trans_date` date NOT NULL COMMENT '流水日期',
+  `category` varchar(50) NOT NULL COMMENT '分项类型',
+  `amount_expression` varchar(255) DEFAULT NULL COMMENT '原始输入表达式',
+  `amount` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '实际计算金额',
+  `bank_change` decimal(12,2) NOT NULL DEFAULT '0.00' COMMENT '引起银行卡变动额',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 转存表中的数据 `transaction_records`
+--
+
+INSERT INTO `transaction_records` (`id`, `shop_name`, `trans_date`, `category`, `amount_expression`, `amount`, `bank_change`, `remark`, `created_at`) VALUES
+(1, '玖誉府店', '2026-04-01', '拿来刮刮乐', '1000', 1000.00, -1000.00, '', '2026-04-23 20:59:18'),
+(2, '玖誉府店', '2026-04-01', '提现', '20000', 20000.00, 20000.00, '', '2026-04-23 20:59:27');
+
+--
+-- 转储表的索引
+--
+
+--
+-- 表的索引 `transaction_records`
+--
+ALTER TABLE `transaction_records`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- 在导出的表使用AUTO_INCREMENT
+--
+
+--
+-- 使用表AUTO_INCREMENT `transaction_records`
+--
+ALTER TABLE `transaction_records`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
